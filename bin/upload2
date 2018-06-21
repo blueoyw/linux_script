@@ -1,0 +1,26 @@
+#!/usr/bin/expect -f
+
+set arg0 [lindex $argv 0]
+set timeout 10
+
+puts "arg0=$arg0, timeout=$timeout\n"
+
+spawn sftp aegis@183.99.50.142
+expect -re "yes/no" { 
+	send "yes\r" 
+	exp_continue
+} -re "password:" { 
+	send "agt321aegis!\r" 
+}
+
+expect "sftp>"
+send "cd /home/aegis/bin\r"
+
+expect "sftp>"
+send "put $arg0\r"
+
+expect "sftp>"
+send "quit\r"
+
+interact
+

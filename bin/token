@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+	echo "Usage> token \"cdr\" \"delimeter\""
+	echo ""
+	exit 0
+fi
+
+python ~/bin/token.py "$1" "$2"

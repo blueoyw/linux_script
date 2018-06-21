@@ -1,0 +1,26 @@
+#!/usr/bin/expect -f
+
+set arg0 [lindex $argv 0]
+set timeout 10
+
+puts "arg0=$arg0, timeout=$timeout\n"
+
+spawn /usr/local/bin/sftp hulee@10.253.9.163
+expect -re "yes/no" { 
+	send "yes\r" 
+	exp_continue
+} -re "password:" { 
+	send "hulee01@inno\r" 
+}
+
+expect -re "sftp>"
+send "cd temp\r"
+
+expect -re "sftp>"
+send "put $arg0\r"
+
+expect -re "sftp>"
+send "quit\r"
+
+interact
+

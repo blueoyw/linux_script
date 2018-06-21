@@ -1,0 +1,57 @@
+#!/bin/bash
+
+BRANCHES=$HOME/SVN/LQMS/trunk/ltas_proxy/branches
+TAGS=$HOME/SVN/LQMS/trunk/ltas_proxy/tags
+PROXY_TRUNK=$HOME/SVN/LQMS/trunk/ltas_proxy/trunk
+BINARY="mam"
+
+echo
+echo "====================================="
+echo "proxy branches"
+echo "====================================="
+\ls --color $BRANCHES
+echo
+echo "====================================="
+echo "proxy tags"
+echo "====================================="
+\ls --color $TAGS
+echo
+
+read ver
+
+if [ "$ver" == "" ]; then
+	DIR=$PROXY_TRUNK
+else
+	if [ -d $BRANCHES/$ver ]; then
+		DIR=$BRANCHES/$ver
+	elif [ -d $TAGS/$ver ]; then
+		DIR=$TAGS/$ver
+	else
+		DIR=$PROXY_TRUNK
+	fi
+fi
+
+echo
+export MANAGE_HOME=$DIR
+echo "MANAGE_HOME=$MANAGE_HOME"
+export BINARY=$BINARY
+echo "BINARY=$BINARY"
+
+if [ -d $MANAGE_HOME/src ]; then
+export MANAGE_CDPATH=$MANAGE_HOME:$MANAGE_HOME/src:$MANAGE_HOME/src/lib
+else
+export MANAGE_CDPATH=$MANAGE_HOME
+fi
+#export MANAGE_CDPATH=$MANAGE_HOME:$MANAGE_HOME/src:$MANAGE_HOME/src/lib
+echo "MANAGE_CDPATH=$MANAGE_CDPATH"
+
+export CDPATH=.:$BOOST_CDPATH:$MANAGE_CDPATH
+echo "CDPATH=$CDPATH"
+echo 
+
+if [ -d $MANAGE_HOME/src ]; then
+cd src
+else
+cd $MANAGE_HOME
+fi
+

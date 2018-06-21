@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+	echo "Usage> make-patch \"Project Name\" \"Issue Number\" "
+	echo ""
+	exit 0
+fi
+
+PATCH_DIR=~/patch
+
+#python ~/bin/token.py "$1" "$2"
+#DATE=`date +%Y-%m-%d-%H-%M-%S`
+DATE=`date +%Y%m%d-%H-%M`
+echo "================================================="
+echo "start $DATE"
+NAME=$1-$DATE-"issue"-$2".tar.gz"
+echo "make patch $NAME"
+echo "================================================="
+sleep 2
+`make clean`
+CMD="make -j3 $BINARY"
+$CMD
+make install
+CMD="tar -zcvf $NAME $BINARY"
+$CMD
+CMD="mv $NAME $PATCH_DIR"
+$CMD
+echo "================================================="
+echo "complete"
+echo "================================================="
+#CMD="cd $PATCH_DIR"
+#$CMD

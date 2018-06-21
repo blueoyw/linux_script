@@ -1,0 +1,38 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+	echo "Usage> $0 src_dir dst_dir"
+	echo
+	exit 0
+fi
+
+SDIR=$1
+DDIR=$2
+
+if [ ! -d $SDIR ]; then
+	echo "error) not exist src dir=\"$SDIR\""
+	exit 0
+fi
+
+if [ ! -d $DDIR ]; then
+	echo "error) not exist dst dir=\"$DDIR\""
+	exit 0
+fi
+
+echo
+echo "directory diff $SDIR $DDIR"
+echo
+
+cd $SDIR
+#FILES=`ls -al Makefile *.[ch] | awk '{print $9}'`
+FILES=`ls -al Makefile *.[ch] | awk '{print $8}'`
+
+for SFILE in $FILES;
+do
+	DFILE=$DDIR/$SFILE
+
+	echo
+	echo "diff $SFILE"
+
+	diff $SFILE $DFILE
+done

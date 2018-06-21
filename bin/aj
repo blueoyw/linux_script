@@ -1,0 +1,14 @@
+#!/usr/bin/expect -f
+
+spawn su
+expect "Password:" { send "e2es1234!\r" }
+#expect "¾ÏÈ£:" { send "e2es1234!\r" }
+
+puts "\n"
+
+spawn /usr/bin/ssh ywoh@localhost
+expect "password:" { send "oyw0509\r" }
+#spawn /usr/local/bin/ssh -p 30001 aegis@localhost
+#expect "password:" { send "agt321aegis!\r" }
+interact
+

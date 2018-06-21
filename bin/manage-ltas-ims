@@ -1,0 +1,65 @@
+#!/bin/bash
+
+IMS_BRANCHES=$HOME/SVN/LQMS/trunk/ltas_ims/branches
+IMS_TAGS=$HOME/SVN/LQMS/trunk/ltas_ims/tags
+IMS_TRUNK=$HOME/SVN/LQMS/trunk/ltas_ims/trunk
+ROOT=$HOME/SVN/LQMS/trunk
+BINARY="lte"
+
+echo
+echo "====================================="
+echo "ltas ims branches"
+echo "====================================="
+\ls --color $IMS_BRANCHES
+echo
+echo "====================================="
+echo "ltas ims tags"
+echo "====================================="
+\ls --color $IMS_TAGS
+echo
+echo "====================================="
+echo "trunk"
+echo "====================================="
+\ls --color $ROOT
+echo
+
+read ver
+
+if [ "$ver" == "" ]; then
+	DIR=$IMS_TRUNK
+else
+	if [ -d $IMS_BRANCHES/$ver ]; then
+		DIR=$IMS_BRANCHES/$ver
+	elif [ -d $IMS_TAGS/$ver ]; then
+		DIR=$IMS_TAGS/$ver
+	elif [ -d $ROOT/$ver ]; then
+		DIR=$ROOT/$ver
+	else
+		DIR=$IMS_TRUNK
+	fi
+fi
+
+echo
+export MANAGE_HOME=$DIR
+echo "MANAGE_HOME=$MANAGE_HOME"
+export BINARY=$BINARY
+echo "BINARY=$BINARY"
+
+if [ -d $MANAGE_HOME/src ]; then
+export MANAGE_CDPATH=$MANAGE_HOME:$MANAGE_HOME/src:$MANAGE_HOME/src/lib
+else
+export MANAGE_CDPATH=$MANAGE_HOME
+fi
+#export MANAGE_CDPATH=$MANAGE_HOME:$MANAGE_HOME/src:$MANAGE_HOME/src/lib
+echo "MANAGE_CDPATH=$MANAGE_CDPATH"
+
+export CDPATH=.:$BOOST_CDPATH:$MANAGE_CDPATH
+echo "CDPATH=$CDPATH"
+echo 
+
+if [ -d $MANAGE_HOME/src ]; then
+cd src
+else
+cd $MANAGE_HOME
+fi
+

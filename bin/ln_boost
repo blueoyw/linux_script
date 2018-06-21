@@ -1,0 +1,62 @@
+#!/bin/bash
+
+V150="1.50.0"
+V161="1.61.0"
+
+if [ $# -ne 1 ]; then
+	echo "Usage> $0 version[$V150|$V161]"
+	echo
+	exit 0
+fi
+
+if [ "$1" != "$V150" ] && [ "$1" != "$V161" ]; then
+	echo "Usage> $0 version[$V150|$V161]"
+	echo
+	exit 0
+fi
+
+BOOST="boost"
+VER=$1
+
+echo "version:$VER"
+
+sleep 1
+
+echo
+echo "include link ----------->"
+
+cd /usr/local/include
+
+echo "\rm $BOOST"
+\rm $BOOST
+
+echo "ln -s $BOOST.$VER $BOOST"
+ln -s $BOOST.$VER $BOOST
+
+echo
+ls -al boost
+echo
+
+sleep 1
+
+echo "library link ----------->"
+
+cd /usr/local/lib
+
+LINKS=`ls -al libboost*.so | awk '{print $8}'`
+for LINK in $LINKS;
+do
+	if [ -e $LINK.$VER ]; then
+
+		echo "\rm $LINK"
+		\rm $LINK
+
+		echo "ln -s $LINK.$VER $LINK"
+		ln -s $LINK.$VER $LINK
+
+	fi
+done
+
+echo
+ls -al libboost*.so
+echo

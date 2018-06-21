@@ -1,0 +1,24 @@
+#!/usr/bin/expect -f
+
+set arg0 [lindex $argv 0]
+set timeout 10
+
+puts "arg0=$arg0, timeout=$timeout\n"
+
+spawn su
+#expect "Password:" { send "e2es1234!\r" }
+expect "¾ÏÈ£:" { send "e2es1234!\r" }
+
+puts "\n"
+
+#spawn /usr/local/bin/scp -P 30001 $arg0 root@localhost:/home/hulee
+spawn /usr/local/bin/scp -P 30001 $arg0 aegis@localhost:/home/hulee
+expect -re "yes/no" { 
+	send "yes\r" 
+	exp_continue
+} -re "password:" { 
+#	send "inno1234!\r" 
+	send "agt321aegis!\r" 
+}
+interact
+
