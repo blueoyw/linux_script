@@ -1,4 +1,4 @@
-set background=dark "하이라이팅
+set background=dark
 set t_Co=256
 set nu
 set ts=4
@@ -9,13 +9,12 @@ set hls
 set smartcase
 set scrolloff=15
 set laststatus=2
-set formatoptions-=r " disable auto comment
 set ruler " 현재 커서 위치 표시
 set incsearch " 키워드 입력 시 점진적 검색
 set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
 " 마지막으로 수정된 곳에 커서를 위치함
 
-set tags+=./tags
+"set tags=/home/syseng/kernelstudy/linux-4.6.3/tags
 
 set csprg=/usr/bin/cscope
 set csto=0
@@ -57,7 +56,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 " Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
 
@@ -79,8 +78,12 @@ filetype plugin indent on    " required
 Plugin 'The-NERD-tree' " nerdtree 이용
 Plugin 'AutoComplPop' " 자동 완성
 Plugin 'taglist-plus' " taglist 이용
-Plugin 'Tagbar' " Tagbar
-Plugin 'Syntastic' " 문법 체크
+Plugin 'Tagbar' " taglist 이용
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'scrooloose/syntastic'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'dracula/vim'
 
 
 let NERDTreeWinPos = "left" "NERD Tree 창 왼쪽에 생성
@@ -104,10 +107,10 @@ nmap <F6> zo " 하나펴기
 "nmap <F5> zM " 다접기
 nmap <F4> zR " 다펴기
 
-let g:colors_name="yw_python.vim"
-let python_highlight_all = 1
-let python_version_2 = 0
-let g:pydiction_location='~/.vim/pydiction/complete-dict'
+"let g:colors_name="yw_python.vim"
+"let python_highlight_all = 1
+"let python_version_2 = 0
+"let g:pydiction_location='~/.vim/pydiction/complete-dict'
 
 let c_gnu = 1
 
@@ -117,23 +120,6 @@ let c_gnu = 1
 "nmap <C-D> <C-W>l
 nmap <F2> <C-W>w " 창이동
 nmap <F3> gT     " 탭이동
-
-"ctags
-if version >= 500
-func! Sts( )
-   let st = expand("<cword>")
-   exe "sts ".st
-endfunc
-nmap ,st :call Sts()<cr>
-
-func! Tj( )
-   let st = expand("<cword>")
-   exe "tj ".st
-   endfunc
-   nmap ,tj :call Tj( )<cr>
-   nmap <C-]> :call Tj( )<cr>
-endif
-
 
 "AutoComplPop function
 set wildmode=list:longest,list:full
@@ -188,4 +174,7 @@ hi VertSplit    ctermfg=239         ctermbg=239         cterm=None
 hi TabLine      ctermfg=245         ctermbg=239         cterm=None
 hi TabLineFill  ctermfg=239         ctermbg=239
 hi TabLineSel   ctermfg=104         ctermbg=236         cterm=Bold
+
+syntax on
+color dracula
 "vim: sw=4
