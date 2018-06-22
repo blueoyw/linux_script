@@ -7,9 +7,8 @@ sudo yum update vim*
 HOME=/home/ywoh/linux_script/vim
 
 cd 
-#git clone https://github.com/blueoyw/linux_script.git
+git clone https://github.com/blueoyw/linux_script.git
 #sudo yum install git ctags
-#git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-#cp -r ~/vim/yw.vim /usr/share/vim/vim74/colors
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp $HOME/yw.vim ~/.vimrc
 vim +PluginInstall +qall
