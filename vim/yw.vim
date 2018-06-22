@@ -13,8 +13,20 @@ set ruler " 현재 커서 위치 표시
 set incsearch " 키워드 입력 시 점진적 검색
 set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
 " 마지막으로 수정된 곳에 커서를 위치함
+" Set Tabs
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+
+" Always display the status line
+set laststatus=2
+
+" Enable Elite mode, No ARRRROWWS!!!!
+let g:elite_mode=1
 
 "set tags=/home/syseng/kernelstudy/linux-4.6.3/tags
+set tags+=./tags,/usr/local/include/tags
 
 set csprg=/usr/bin/cscope
 set csto=0
@@ -154,46 +166,6 @@ let g:syntastic_cpp_compiler_options = ' -std=c++0x'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-
-
-hi Normal       ctermfg=253         ctermbg=234         cterm=None
-hi Cursor       ctermfg=253         ctermbg=57          cterm=None
-hi SpecialKey   ctermfg=70          ctermbg=None        cterm=None
-hi Directory    ctermfg=57          ctermbg=254         cterm=None
-hi ErrorMsg     ctermfg=160         ctermbg=245         cterm=None
-hi PreProc      ctermfg=243         ctermbg=None        cterm=Bold
-hi Search       ctermfg=125         ctermbg=None        cterm=Bold
-hi Type         ctermfg=166         ctermbg=None        cterm=Bold
-hi Statement    ctermfg=172         ctermbg=None        cterm=Bold
-hi Comment      ctermfg=4         	ctermbg=None        cterm=bold
-hi LineNr       ctermfg=244         ctermbg=233         cterm=None
-hi NonText      ctermfg=105         ctermbg=None        cterm=Bold
-hi DiffText     ctermfg=165         ctermbg=244         cterm=None
-hi Constant     ctermfg=76          ctermbg=None        cterm=None
-hi Todo         ctermfg=162         ctermbg=None        cterm=Bold
-hi Identifier   ctermfg=142         ctermbg=None        cterm=Bold
-hi Error        ctermfg=None        ctermbg=196         cterm=Bold
-hi Special      ctermfg=172         ctermbg=None        cterm=Bold
-hi Ignore       ctermfg=221         ctermbg=None        cterm=Bold
-hi Underline    ctermfg=147         ctermbg=None        cterm=Italic
-
-hi FoldColumn   ctermfg=132         ctermbg=None        cterm=None
-hi Folded       ctermfg=132         ctermbg=None        cterm=Bold
-
-hi Visual       ctermfg=248         ctermbg=238         cterm=None
-
-hi Pmenu        ctermfg=62          ctermbg=233         cterm=None
-hi PmenuSel     ctermfg=69          ctermbg=232         cterm=Bold
-hi PmenuSbar    ctermfg=247         ctermbg=233         cterm=Bold
-hi PmenuThumb   ctermfg=248         ctermbg=233         cterm=None
-
-hi StatusLineNC ctermfg=248         ctermbg=239         cterm=None
-hi StatusLine   ctermfg=39          ctermbg=239         cterm=None
-hi VertSplit    ctermfg=239         ctermbg=239         cterm=None
-
-hi TabLine      ctermfg=245         ctermbg=239         cterm=None
-hi TabLineFill  ctermfg=239         ctermbg=239
-hi TabLineSel   ctermfg=104         ctermbg=236         cterm=Bold
 
 syntax on
 color dracula
