@@ -4,7 +4,9 @@ set nu
 set ts=4
 set sw=4
 set smartindent
-set cindent
+" set cindent
+" handle lambda correctly
+set cindent cino=j1,(0,ws,Ws
 set backspace=eol,start,indent
 set hls
 set smartcase
