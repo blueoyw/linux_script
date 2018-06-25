@@ -5,6 +5,7 @@ set ts=4
 set sw=4
 set smartindent
 set cindent
+set backspace=eol,start,indent
 set hls
 set smartcase
 set scrolloff=15
