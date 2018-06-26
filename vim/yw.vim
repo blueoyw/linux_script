@@ -170,9 +170,9 @@ nmap <leader>n :bnext<cr>
 "move previous buffer
 nmap <leader>p :bprevious<cr> 
 "quit current buffer and move next
-nmap <leader>bq :bp <BAR> bd #<cr>
+nmap <leader>q :bp <BAR> bd #<cr>
 " list buffer
-nmap <leader>bl :ls<cr>
+nmap <leader>l :ls<cr>
 
 "syntastic
 set statusline+=%#warningmsg#
