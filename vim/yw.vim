@@ -4,7 +4,7 @@ set nu
 set ts=4
 set sw=4
 set smartindent
-" set cindent
+set cindent
 " handle lambda correctly
 set cindent cino=j1,(0,ws,Ws
 set backspace=eol,start,indent
@@ -100,6 +100,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dracula/vim'
 
+"set leader to ,
+let mapleader=","
 
 let NERDTreeWinPos = "left" "NERD Tree 창 왼쪽에 생성
 " CR carriage-return
@@ -129,12 +131,6 @@ nmap <F4> zR " 다펴기
 
 let c_gnu = 1
 
-"nmap <C-W> <C-W>k
-"nmap <C-S> <C-W>j
-"nmap <C-A> <C-W>h
-"nmap <C-D> <C-W>l
-nmap <F2> <C-W>w " 창이동
-nmap <F3> gT     " 탭이동
 
 "AutoComplPop function
 set wildmode=list:longest,list:full
@@ -158,6 +154,25 @@ let g:airline_theme='hybrid'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 
+"nmap <C-W> <C-W>k
+"nmap <C-S> <C-W>j
+"nmap <C-A> <C-W>h
+"nmap <C-D> <C-W>l
+"tab 
+nmap <F2> <C-W>w " 창이동
+nmap <F3> gT     " 탭이동
+
+"buffer
+"new buffer
+nmap <leader>t :enew<cr> 
+"move next
+nmap <leader>n :bnext<cr>
+"move previous buffer
+nmap <leader>p :bprevious<cr> 
+"quit current buffer and move next
+nmap <leader>bq :bp <BAR> bd #<cr>
+" list buffer
+nmap <leader>bl :ls<cr>
 
 "syntastic
 set statusline+=%#warningmsg#
