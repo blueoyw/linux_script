@@ -108,6 +108,10 @@ let NERDTreeWinPos = "left" "NERD Tree 창 왼쪽에 생성
 nmap <F7> :NERDTreeToggle<CR>
 nmap <F8> :TlistToggle<CR>
 
+" for ctags
+nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <silent><leader>tt :TagbarToggle<cr>
+
 filetype on
 
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
@@ -164,15 +168,15 @@ nmap <F3> gT     " 탭이동
 
 "buffer
 "new buffer
-nmap <leader>t :enew<cr> 
+nnoremap <leader>t :enew<cr> 
 "move next
-nmap <leader>n :bnext<cr>
+nnoremap <leader>n :bnext<cr>
 "move previous buffer
-nmap <leader>p :bprevious<cr> 
+nnoremap <leader>p :bprevious<cr> 
 "quit current buffer and move next
-nmap <leader>q :bp <BAR> bd #<cr>
+nnoremap <leader>q :bp <BAR> bd #<cr>
 " list buffer
-nmap <leader>l :ls<cr>
+nnoremap <leader>l :ls<cr>
 
 "syntastic
 set statusline+=%#warningmsg#
