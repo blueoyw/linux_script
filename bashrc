@@ -19,6 +19,14 @@ alias svc='svn commit'
 alias mp='make-patch'
 #alias su='svn update'
 
+#github
+alias ga='git add -p'
+alias gc='git commit -v'
+alias gp='git push remote origin'
+alias gd='git diff'
+alias gs='git status'
+
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
