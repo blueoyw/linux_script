@@ -25,6 +25,8 @@ alias gc='git commit -v'
 alias gp='git push remote origin'
 alias gd='git diff'
 alias gs='git status'
+alias gb='git branch'
+alias gco='git checkout'
 
 
 # Source global definitions
