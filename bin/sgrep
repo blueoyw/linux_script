@@ -1,3 +1,4 @@
 #!/bin/bash
 echo "grep" $1
-grep -r -n --include "*.h" --include "*.cpp" --include "*.c" $1
+STR='$1'
+grep -r -n --include "*.h" --include "*.cpp" --include "*.c" $STR *
