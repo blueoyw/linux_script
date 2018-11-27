@@ -13,4 +13,5 @@ cp ../bashrc ~/.bashrc
 . ~/.bashrc
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp ./yw.vim ~/.vimrc
+. ~/.bashrc
 vim +PluginInstall +qall
